@@ -8,7 +8,7 @@ public:
         while(k!=0){
             int ele=pq.top();pq.pop();
             res+=ele;
-            ele=ceil((ele+2)/3);k--;
+            ele=(ele+2)/3;k--;
             pq.push(ele);
         }
         return res;
