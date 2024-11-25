@@ -1,7 +1,7 @@
 class Solution {
 public:
     int slidingPuzzle(vector<vector<int>>& board) {
-        ios::sync_with_stdio(0);
+        ios_base::sync_with_stdio(0);
         cin.tie(0);cout.tie(0);
         string res="123450";
     set<string> preset;queue<string> curque;string num="";
