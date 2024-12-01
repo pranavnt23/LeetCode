@@ -1,0 +1,1 @@
+Welcome to my LeetCode Repository! This repository contains my solutions to various problems on LeetCode, written in some set of programming language. Each solution includes a well-structured code file and, in some cases, explanations for clarity.
