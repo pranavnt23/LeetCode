@@ -3,23 +3,39 @@ public:
     int isPrefixOfWord(string sentence, string searchWord) {
         ios_base::sync_with_stdio(0);
         cin.tie(0);cout.tie(0);
-        stringstream ss(sentence);
-        string word;int ind=1;
-        //vector<string> words;
-        while(ss>>word){
-            //words.push_back(word);
-            if(word.find(searchWord)==0){
-                return ind;
-            }
-            ind++;
-        }
-        return -1;
-        /*struct trienode{
+        
+        struct trienode{
             int idx;
-            unordered_map<char,triennode*> child;
+            unordered_map<char,trienode*> child;
+            trienode():idx(-1){}
         };
-        for(int i=0;i<words.size();i++){
 
-        }*/
+        stringstream ss(sentence);vector<string> words;
+        string word;int ind=1;
+        trienode* root=new trienode();
+    
+        auto insert=[](trienode* root,string word,int index){
+            trienode* current=root;
+            for(char c:word){
+                if(!current->child.count(c)){
+                    current->child[c]=new trienode();
+                }
+                current=current->child[c];
+                if(current->idx==-1){current->idx=index;}
+            }
+        };
+        auto searchIdx=[](trienode* root,string searchWord){
+            trienode* current=root;
+            for(char s:searchWord){
+                if(!current->child.count(s)) return -1;
+                current=current->child[s]; 
+            }
+            return current->idx;
+        };
+
+        while(ss>>word){
+            insert(root,word,ind++);
+        }
+        return searchIdx(root,searchWord);
     }
 };
