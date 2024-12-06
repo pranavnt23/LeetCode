@@ -1,6 +1,9 @@
 class Solution {
 public:
     int maxAreaOfIsland(vector<vector<int>>& grid) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);cout.tie(0);
+        
         int maxArea=0;
         set<pair<int,int>> visited;
         int row=grid.size(),col=grid[0].size();
