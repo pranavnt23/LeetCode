@@ -1,6 +1,8 @@
 class Solution {
  public:
   int maximumLength(string s) {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
     const int n = s.length();
     int ans = -1;
     int runningLen = 0;
