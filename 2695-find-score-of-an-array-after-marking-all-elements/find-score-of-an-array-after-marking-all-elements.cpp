@@ -1,42 +1,39 @@
 class Solution {
 public:
     long long findScore(vector<int>& nums) {
-        long long score = 0; // Change to long long to avoid overflow
+        ios_base::sync_with_stdio(0);
+        cin.tie(0); cout.tie(0);
+
+        long long ans = 0;
         int n = nums.size();
-        deque<int> q;
+        vector<bool> seen(n, false);
 
-        // Traverse through the array
+        // Min-heap to process elements in ascending order of value
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+
+        // Push all elements with <value, index>
         for (int i = 0; i < n; i++) {
-            // If queue is not empty and the current number is greater than or equal to the last in queue
-            if (!q.empty() && nums[i] >= q.back()) {
-                bool skip = false;
-                // Process the elements in the queue
-                while (!q.empty()) {
-                    int add = q.back();
-                    q.pop_back();
-                    if (!skip) {
-                        score += add;
-                    }
-                    skip = !skip;
-                }
-                continue;
-            }
-
-            // Add current element to the queue
-            q.push_back(nums[i]);
+            pq.push({nums[i], i});
         }
 
-        // Final processing of remaining elements in the queue
-        bool skip = false;
-        while (!q.empty()) {
-            int add = q.back();
-            q.pop_back();
-            if (!skip) {
-                score += add;
+        // Process the priority queue
+        while (!pq.empty()) {
+            int value = pq.top().first;
+            int index = pq.top().second;
+            pq.pop();
+
+            // If this index is not yet processed
+            if (!seen[index]) {
+                // Add current value to the score
+                ans += value;
+
+                // Mark current index and its neighbors as seen
+                seen[index] = true;
+                if (index - 1 >= 0) seen[index - 1] = true;
+                if (index + 1 < n) seen[index + 1] = true;
             }
-            skip = !skip;
         }
 
-        return score;
+        return ans;
     }
 };
