@@ -1,6 +1,8 @@
 class Solution {
 public:
     long long continuousSubarrays(vector<int>& nums) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);cout.tie(0);
         const int n=nums.size();
         long long cnt=0;
         multiset<int> hasX;
