@@ -1,6 +1,8 @@
 class Solution {
 public:
     string repeatLimitedString(string s, int rep) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);cout.tie(nullptr);
         string ans = "";
         unordered_map<char, int> hmap;
         priority_queue<pair<char, int>> pq;
