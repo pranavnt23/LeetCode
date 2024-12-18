@@ -30,11 +30,11 @@ public:
             cnt++;
             }
         }
-        int ans=0;
+        num=0;
         while(!stk.empty()){
-            ans+=stk.top();
+            num+=stk.top();
             stk.pop();
         }
-        return ans;
+        return num;
     }
 };
