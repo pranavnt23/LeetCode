@@ -1,11 +1,7 @@
 class Solution {
 public:
     int waysToSplitArray(vector<int>& nums) {
-	long long total = 0;
-	for (const auto& n : nums)
-		total += n;
-		
-
+        long long total = accumulate(nums.begin(), nums.end(), 0LL);
         int ans = 0;
         long long right = 0, left = 0;
 
