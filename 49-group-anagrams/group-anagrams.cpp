@@ -6,9 +6,9 @@ public:
             sort(str.begin(), str.end()); 
             strs1.push_back(str); 
         }
-    
+
         vector<bool> visited(strs.size(), false);
-    
+        
         for (int i = 0; i < strs1.size(); i++) {
             if (visited[i]) continue; 
             vector<string> temp;
