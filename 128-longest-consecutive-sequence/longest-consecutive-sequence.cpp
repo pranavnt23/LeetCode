@@ -1,21 +1,17 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        if(nums.empty()) return 0; // Handle empty input
-        
-        sort(nums.begin(), nums.end());
-        int maxc = 1, occ = 1; // Start from 1 because a single number is a sequence
-        
-        for(int i = 1; i < nums.size(); i++) {
-            if(nums[i] == nums[i - 1]) continue; // Skip duplicates
-            
-            if(nums[i] == nums[i - 1] + 1) {
+        if(nums.size()==0) return 0;
+        sort(nums.begin(),nums.end());
+        int maxc=1,occ=1;
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]==nums[i-1]) continue;
+            if(nums[i]-1==nums[i-1]){
                 occ++;
-            } else {
-                maxc = max(maxc, occ);
-                occ = 1; // Reset counter for new sequence
             }
+            else{occ=1;}
+            if(occ>maxc){maxc=occ;}
         }
-        return max(maxc, occ); // Compare the last sequence
+        return maxc;
     }
 };
