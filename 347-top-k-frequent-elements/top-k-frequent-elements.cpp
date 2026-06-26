@@ -4,6 +4,8 @@ public:
         return a.second > b.second;
     }
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(NULL);cout.tie(NULL);
        unordered_map<int,int> hmap;//<ele,occ> 
        vector<int> ans;
        for(int i=0;i<nums.size();i++){
