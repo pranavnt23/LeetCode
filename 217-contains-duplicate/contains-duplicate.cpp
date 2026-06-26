@@ -1,13 +1,12 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_map<int,int> hmap; //num,num of occurence
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        unordered_map<int, int> hmap;
         for(int i=0;i<nums.size();i++){
-            int ele=nums[i];
-            hmap[ele]++;
-            if(hmap[ele]>=2){
-                return true;
-            }
+            hmap[nums[i]]++;
+            if(hmap[nums[i]]>1) return true;
         }
         return false;
     }
