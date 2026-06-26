@@ -1,27 +1,22 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        int prd = 1;
-        int zeroCount = 0;
-        vector<int> ans;
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);cout.tie(0);
 
-        for (int i = 0; i < nums.size(); i++) {
-            if (nums[i] == 0) {
-                zeroCount++;
-                continue;
-            }
-            prd *= nums[i];
+        vector<int> ans(nums.size(),1);
+        int prefix=1,suffix=1;
+
+        for(int i=0;i<nums.size();i++){
+            ans[i]*=prefix;
+            prefix*=nums[i];
         }
 
-        for (int i = 0; i < nums.size(); i++) {
-            if (zeroCount > 1) {
-                ans.push_back(0); 
-            } else if (zeroCount == 1) {
-                ans.push_back(nums[i] == 0 ? prd : 0); 
-            } else {
-                ans.push_back(prd / nums[i]); 
-            }
+        for(int i=nums.size()-1;i>=0;i--){
+            ans[i]*=suffix;
+            suffix*=nums[i];
         }
+
         return ans;
     }
 };
