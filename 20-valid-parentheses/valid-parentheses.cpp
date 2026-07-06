@@ -2,15 +2,15 @@ class Solution {
 public:
     bool isValid(string str) {
         stack<char> stk;
-        for (char s:str){
-            if(s=='('||s=='{'||s=='[') stk.push(s);
-            else {
-                if(stk.empty()){ return false; }
-                char ele=stk.top();
-                if(ele=='(' and s!=')') return false;
-                if(ele=='[' and s!=']') return false;
-                if(ele=='{' and s!='}') return false;
-                stk.pop();
+        for(int i=0;i<str.size();i++){
+            char ele=str[i];
+            if(ele=='{'||ele=='('||ele=='[') stk.push(ele);
+            else{
+                if(stk.empty()) {return false;}
+                if(ele=='}' and stk.top()=='{') stk.pop();
+                else if(ele==')' and stk.top()=='(') stk.pop();
+                else if(ele==']' and stk.top()=='[') stk.pop();
+                else return false;
             }
         }
         if(stk.empty()) return true;
