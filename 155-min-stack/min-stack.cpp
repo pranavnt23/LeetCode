@@ -17,7 +17,7 @@ public:
     }
     
     int getMin() {
-        return stk.back().second;
+        return stk.back().second;   
     }
 };
 
