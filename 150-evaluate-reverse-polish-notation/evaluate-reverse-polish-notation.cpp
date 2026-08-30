@@ -3,19 +3,21 @@ public:
     int evalRPN(vector<string>& tokens) {
         stack<int> stk;
         for(int i=0;i<tokens.size();i++){
-            string c=tokens[i];
-            if(c=="+" || c=="-"||c=="*"||c=="/"){
-                int op1=stk.top();
-                stk.pop();
-                int op2=stk.top(),temp=0;
-                stk.pop();
-                if(c=="+") temp=op2+op1;
-                if(c=="-") temp=op2-op1;
-                if(c=="*") temp=op2*op1;
-                if(c=="/") temp=op2/op1;
-                stk.push(temp);
+            if(tokens[i]=="+"||tokens[i]=="-"||tokens[i]=="*"||tokens[i]=="/"){
+                int op2=stk.top();stk.pop();
+                int op1=stk.top();stk.pop();
+                int res;
+                string op=tokens[i];
+                if(op=="+") res=op1+op2;
+                if(op=="-") res=op1-op2;
+                if(op=="*") res=op1*op2;
+                if(op=="/") res=op1/op2;
+
+                stk.push(res);
+            } 
+            else{
+                stk.push(stoi(tokens[i]));
             }
-            else {stk.push(stoi(c));}
         }
         return stk.top();
     }
