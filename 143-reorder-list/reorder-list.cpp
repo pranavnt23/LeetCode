@@ -11,11 +11,11 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        ListNode* slow=head;
         ListNode* fast=head;
-        while(fast!=nullptr && fast->next!=nullptr){
+        ListNode* slow=head;
+        while(fast!=nullptr and fast->next!=nullptr){
             fast=fast->next->next;
-            slow=slow->next;
+            slow=slow->next;    
         }
         ListNode* second=slow->next;
         slow->next=nullptr;
@@ -27,17 +27,16 @@ public:
             node=second;
             second=temp;
         }
-
         ListNode* first=head;
         second=node;
-
         while(second){
             ListNode* temp1=first->next;
             ListNode* temp2=second->next;
             first->next=second;
             second->next=temp1;
-            first=temp1;
             second=temp2;
+            first=temp1;
         }
+
     }
 };
