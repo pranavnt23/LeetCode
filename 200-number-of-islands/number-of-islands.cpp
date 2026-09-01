@@ -3,7 +3,6 @@ public:
     int numIslands(vector<vector<char>>& grid) {
         ios_base::sync_with_stdio(0);
         cin.tie(0);cout.tie(0);
-
         set<pair<int,int>> visited;
         vector<pair<int,int>> directions={{0,-1},{0,1},{-1,0},{1,0}};
         int row=grid.size(),col=grid[0].size();
