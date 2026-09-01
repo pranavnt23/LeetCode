@@ -1,42 +1,38 @@
 class Solution {
 public:
     int maxAreaOfIsland(vector<vector<int>>& grid) {
-        ios_base::sync_with_stdio(0);
-        cin.tie(0);cout.tie(0);
-        
-        int maxArea=0;
         set<pair<int,int>> visited;
+        int maxArea=0;
         int row=grid.size(),col=grid[0].size();
+        vector<pair<int,int>> directions={{0,-1},{0,1},{1,0},{-1,0}};
 
-        auto bfs=[&](int r,int c){
-            queue<pair<int,int>> dfqueue;
-            dfqueue.push({r,c});
-            visited.insert({r,c});
-            vector<pair<int,int>> directions={{0,1},{0,-1},{1,0},{-1,0}};
+        auto bfs=[&](int i,int j){
+            queue<pair<int,int>> bfsq;
+            bfsq.push({i,j});
+            visited.insert({i,j});
             int area=1;
-
-            while(!dfqueue.empty()){
-                auto [rr,cc]=dfqueue.front();dfqueue.pop();
-                for(auto [dr,dc]:directions){
-                    int nr=dr+rr,nc=dc+cc;
-                    if((nr>=0&&nr<row)&&(nc>=0&&nc<col)&&
-                    grid[nr][nc]==1 && visited.find({nr,nc})==visited.end()){
+            while(!bfsq.empty()){
+                auto [r,c]=bfsq.front();bfsq.pop();
+                for (auto [rr,cc]:directions){
+                    int nr=r+rr,nc=c+cc;
+                    if((nr>=0 && nr<row) && (nc>=0 && nc<col) && 
+                    visited.find({nr,nc})==visited.end() && grid[nr][nc]==1){
                         area++;
-                        dfqueue.push({nr,nc});
+                        bfsq.push({nr,nc});
                         visited.insert({nr,nc});
                     }
                 }
             }
-            if(area>maxArea){maxArea=area;}
+            maxArea=max(maxArea,area);
         };
 
         for(int i=0;i<row;i++){
             for(int j=0;j<col;j++){
-                if(grid[i][j]==1&&visited.find({i,j})==visited.end()){
+                if(grid[i][j]==1 && visited.find({i,j})==visited.end()){
                     bfs(i,j);
                 }
             }
         }
-        return maxArea;
+        return maxArea;   
     }
 };
