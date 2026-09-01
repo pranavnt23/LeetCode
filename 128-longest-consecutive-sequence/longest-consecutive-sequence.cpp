@@ -7,11 +7,11 @@ public:
         
         for(int i=1;i<nums.size();i++){
             if(nums[i-1]+1==nums[i]){
-              maxi++;
-            } 
-            else if(nums[i-1]==nums[i]) continue;
+                maxi++;
+            }else if(nums[i-1]==nums[i]) continue;
             else{
-                res=max(res,maxi);maxi=1;
+                res=max(res,maxi);
+                maxi=1;
             }
         }
         res=max(res,maxi);
