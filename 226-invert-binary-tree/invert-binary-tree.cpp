@@ -11,19 +11,17 @@
  */
 class Solution {
 public:
-    void invtree(TreeNode* rt){
-        if(rt==NULL){
-            return;
-        }
-        TreeNode* temp;
-        temp=rt->left;
+    void invTree(TreeNode* rt){
+        if(rt==NULL) return;
+        TreeNode* temp=rt->left;
         rt->left=rt->right;
         rt->right=temp;
-        invtree(rt->left);
-        invtree(rt->right);
+        invTree(rt->left);
+        invTree(rt->right);
     }
     TreeNode* invertTree(TreeNode* root) {
-        invtree(root);
+        if(root==NULL) return NULL;
+        invTree(root);
         return root;
     }
 };
