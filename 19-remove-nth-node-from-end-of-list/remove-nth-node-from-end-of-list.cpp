@@ -17,7 +17,6 @@ public:
             node=node->next;
         }
         cnt=cnt-n;int var=0;
-        ListNode dummy(0);
         if(cnt==0) return head->next;
         node=head;
         while(node!=nullptr){
