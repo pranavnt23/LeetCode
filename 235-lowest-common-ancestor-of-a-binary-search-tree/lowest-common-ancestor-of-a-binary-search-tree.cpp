@@ -13,9 +13,9 @@ public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root==NULL || root==p || root==q) return root;
 
-        if((root->left==p && root->right==q)||(root->left==q && root->right==p)){
-            return root;
-        }
+        // if((root->left==p && root->right==q)||(root->left==q && root->right==p)){
+        //     return root;
+        // }
 
         TreeNode* left=lowestCommonAncestor(root->left,p,q);
         TreeNode* right=lowestCommonAncestor(root->right,p,q);
