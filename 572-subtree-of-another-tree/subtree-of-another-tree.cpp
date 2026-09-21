@@ -11,7 +11,6 @@
  */
 class Solution {
 public:
-    bool res=false;
     bool subTree(TreeNode* rt,TreeNode* srt){
         if(rt==NULL && srt==NULL) return true;
         if(rt==NULL || srt==NULL || rt->val!=srt->val) return false;
