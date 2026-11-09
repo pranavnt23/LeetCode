@@ -7,8 +7,8 @@ public:
             if(hmap.find(str[i])!=hmap.end()){
                 left=max(left,hmap[str[i]]+1);
             }
-            max_sub=max(max_sub,i-left+1);
             hmap[str[i]]=i;
+            max_sub=max(max_sub,i-left+1);
         }
         return max_sub;
     }
