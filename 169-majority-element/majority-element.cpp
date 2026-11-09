@@ -1,15 +1,18 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int,int> hmap;
-        for(int i=0;i<nums.size();i++){
-            hmap[nums[i]]++;
-        }
-        int res=0,maxc=INT_MIN;
-        for(const auto&[key,ele]:hmap){
-            if(maxc<ele){
-                res=key;
-                maxc=ele;
+        sort(nums.begin(),nums.end());
+        int res=nums[0],maxc=1,cnt=1;
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]==nums[i-1]){
+                cnt++;
+                if(cnt>maxc){
+                    maxc=cnt;
+                    res=nums[i];
+                }
+            }
+            else{
+                cnt=1;
             }
         }
         return res;
